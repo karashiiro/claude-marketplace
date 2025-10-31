@@ -1,0 +1,15 @@
+{
+  "description": "SessionStart hook that activates uwuclaude v1.5",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/hooks-handlers/session-start.js"
+          }
+        ]
+      }
+    ]
+  }
+}
