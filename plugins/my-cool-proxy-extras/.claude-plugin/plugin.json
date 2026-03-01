@@ -1,0 +1,10 @@
+{
+  "name": "my-cool-proxy-extras",
+  "description": "Extra agents and utilities for use with the my-cool-proxy MCP gateway",
+  "version": "1.0.0",
+  "author": {
+    "name": "karashiiro"
+  },
+  "license": "MIT",
+  "keywords": ["research", "mcp", "proxy"]
+}
