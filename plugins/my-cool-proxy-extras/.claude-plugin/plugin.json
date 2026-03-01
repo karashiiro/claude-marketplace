@@ -1,7 +1,7 @@
 {
   "name": "my-cool-proxy-extras",
   "description": "Extra agents and utilities for use with the my-cool-proxy MCP gateway",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "karashiiro"
   },
