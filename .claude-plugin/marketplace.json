@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "A Claude Code plugin marketplace",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "pluginRoot": "./plugins"
   },
   "plugins": [
@@ -21,6 +21,18 @@
       "license": "MIT",
       "keywords": ["research", "mcp", "proxy"],
       "category": "research"
+    },
+    {
+      "name": "uwuclaude",
+      "source": "./plugins/uwuclaude",
+      "description": "uwuclaude v1.5 output style - kawaii internet commentary with dramatic enthusiasm and witty analysis",
+      "version": "1.5.0",
+      "author": {
+        "name": "karashiiro"
+      },
+      "license": "MIT",
+      "keywords": ["output-style", "uwu", "kawaii", "personality"],
+      "category": "output-style"
     }
   ]
 }
