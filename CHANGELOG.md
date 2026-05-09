@@ -1,5 +1,12 @@
 # Changelog
 
+## entrypoint-agents 1.0.0
+
+Initial release of the entrypoint-agents plugin.
+
+**New:**
+- Added `main` agent defining the entrypoint philosophy for Claude Code sessions (problem-solving focus, correctness over simplicity, skill-first execution)
+
 ## uwuclaude 1.5.0
 
 Initial release of the uwuclaude output style plugin.
