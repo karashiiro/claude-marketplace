@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
 # PreToolUse hook: reject any file-modifying tool call whose written content
-# contains the current username (the value of $USER). This guards against
-# accidentally leaking your local username into files.
+# contains the current username (the value of $USER) as a whole word,
+# case-insensitively. This guards against accidentally leaking your local
+# username into files. Whole-word, case-insensitive matching avoids false
+# positives on short/common usernames (e.g. "ben" inside "benefit").
 #
 # Reads the hook payload as JSON on stdin, inspects the fields that carry
 # written content (content / new_string / new_source — covering Write, Edit,
@@ -62,6 +64,27 @@ RESULT="$(printf '%s' "$PAYLOAD" | awk -v user="$USERNAME" '
     return substr(j, i, k - i)
   }
 
+  # A "word" character for boundary purposes (standard \b semantics).
+  function isword(c) { return (c ~ /[A-Za-z0-9_]/) }
+
+  # Case-insensitive, whole-word search for u within v. Returns 1 if u occurs
+  # in v not flanked by word characters on either side, else 0.
+  function wordmatch(v, u,    lv, lu, n, m, off, p, before, after) {
+    lv = tolower(v); lu = tolower(u)
+    n = length(lv); m = length(lu)
+    if (m == 0) return 0
+    off = 1
+    while (1) {
+      p = index(substr(lv, off), lu)
+      if (p == 0) return 0
+      p = p + off - 1
+      before = (p > 1)     ? substr(lv, p - 1, 1) : ""
+      after  = (p + m <= n) ? substr(lv, p + m, 1) : ""
+      if (!isword(before) && !isword(after)) return 1
+      off = p + 1
+    }
+  }
+
   END {
     # Best-effort target path for the message.
     path = valrange("file_path", 1)
@@ -76,7 +99,7 @@ RESULT="$(printf '%s' "$PAYLOAD" | awk -v user="$USERNAME" '
       while (1) {
         v = valrange(key, pos)
         if (G_end == 0) break
-        if (index(v, user) > 0) { matched = key; break }
+        if (wordmatch(v, user)) { matched = key; break }
         pos = G_end
       }
       if (matched != "") break

@@ -1,5 +1,10 @@
 # Changelog
 
+## username-guard 1.1.0
+
+**Changed:**
+- Username matching is now case-insensitive and whole-word (standard `\b` boundaries), avoiding false positives where the username is a substring of a longer word (e.g. `ben` inside `benefit`) and catching case variations (`Alice`, `ALICE`)
+
 ## username-guard 1.0.0
 
 Initial release of the username-guard plugin.
