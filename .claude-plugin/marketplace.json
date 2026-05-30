@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "A Claude Code plugin marketplace",
-    "version": "1.2.0",
+    "version": "1.4.0",
     "pluginRoot": "./plugins"
   },
   "plugins": [
@@ -45,6 +45,18 @@
       "license": "MIT",
       "keywords": ["entrypoint", "agent"],
       "category": "development"
+    },
+    {
+      "name": "username-guard",
+      "source": "./plugins/username-guard",
+      "description": "Blocks file modifications whose written content contains the current username ($USER) as a whole word (case-insensitive)",
+      "version": "1.1.0",
+      "author": {
+        "name": "karashiiro"
+      },
+      "license": "MIT",
+      "keywords": ["hook", "security", "pretooluse", "username", "privacy"],
+      "category": "security"
     }
   ]
 }

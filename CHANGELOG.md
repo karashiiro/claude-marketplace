@@ -1,5 +1,18 @@
 # Changelog
 
+## username-guard 1.1.0
+
+**Changed:**
+- Username matching is now case-insensitive and whole-word (standard `\b` boundaries), avoiding false positives where the username is a substring of a longer word (e.g. `ben` inside `benefit`) and catching case variations (`Alice`, `ALICE`)
+
+## username-guard 1.0.0
+
+Initial release of the username-guard plugin.
+
+**New:**
+- PreToolUse hook that rejects any file modification (Write / Edit / MultiEdit / NotebookEdit) whose written content contains the current username (the value of `$USER`), with an informative denial message
+- Cross-platform pure-bash + awk implementation with an `id -un` fallback when `$USER` is unset; no jq/python/node dependency
+
 ## entrypoint-agents 1.0.0
 
 Initial release of the entrypoint-agents plugin.
