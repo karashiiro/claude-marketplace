@@ -1,5 +1,13 @@
 # Changelog
 
+## username-guard 1.0.0
+
+Initial release of the username-guard plugin.
+
+**New:**
+- PreToolUse hook that rejects any file modification (Write / Edit / MultiEdit / NotebookEdit) whose written content contains the current username (the value of `$USER`), with an informative denial message
+- Cross-platform pure-bash + awk implementation with an `id -un` fallback when `$USER` is unset; no jq/python/node dependency
+
 ## entrypoint-agents 1.0.0
 
 Initial release of the entrypoint-agents plugin.

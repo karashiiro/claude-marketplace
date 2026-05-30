@@ -1,0 +1,10 @@
+{
+  "name": "username-guard",
+  "description": "Blocks file modifications whose written content contains the current username ($USER)",
+  "version": "1.0.0",
+  "author": {
+    "name": "karashiiro"
+  },
+  "license": "MIT",
+  "keywords": ["hook", "security", "pretooluse", "username", "privacy"]
+}
